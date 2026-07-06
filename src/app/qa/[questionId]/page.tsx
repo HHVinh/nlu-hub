@@ -55,9 +55,9 @@ export default async function QuestionDetailPage({ params }: { params: Promise<{
   const isLoggedIn = !!session;
   
   if (session?.user?.email) {
-    const userProfile = await UserProfile.findOne({ email: session.user.email }).lean();
+    const userProfile = await UserProfile.findOne({ email: session.user?.email }).lean();
     isBanned = userProfile?.isBanned || false;
-    isFollowed = (question.followers || []).includes(session.user.email);
+    isFollowed = (question.followers || []).includes(session.user?.email);
   }
 
   const answers = await Answer.find({ questionId }).sort({ createdAt: 1 });
@@ -76,7 +76,7 @@ export default async function QuestionDetailPage({ params }: { params: Promise<{
             {question.title}
           </h1>
           {/* Nút Theo dõi chỉ hiện khi đã đăng nhập và không phải là tác giả */}
-          {session?.user?.email && session.user.email !== question.authorEmail && (
+          {session?.user?.email && session.user?.email !== question.authorEmail && (
             <FollowButtonClient 
               questionId={questionId} 
               isFollowed={isFollowed} 

@@ -30,12 +30,12 @@ export default function LoginButton({ session }: Props) {
           className={`flex items-center gap-2 sm:gap-3 p-1 sm:pr-4 rounded-full transition-all focus:outline-none ${isOpen ? 'bg-slate-100 dark:bg-slate-800 shadow-inner' : 'hover:bg-slate-100 dark:hover:bg-slate-800'}`}
         >
           <img
-            src={session.user.image}
+            src={session.user?.image}
             alt="Avatar"
             className="w-9 h-9 sm:w-10 sm:h-10 rounded-full border-2 border-white dark:border-slate-700 shadow-sm object-cover"
           />
           <div className="text-left hidden sm:block">
-            <p className="font-bold text-sm text-slate-800 dark:text-slate-100 leading-tight">{session.user.name}</p>
+            <p className="font-bold text-sm text-slate-800 dark:text-slate-100 leading-tight">{session.user?.name}</p>
           </div>
           <svg className={`w-4 h-4 text-slate-400 hidden sm:block transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
@@ -45,8 +45,8 @@ export default function LoginButton({ session }: Props) {
         {isOpen && (
           <div className="absolute right-0 mt-3 w-56 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 overflow-hidden z-50 animate-in fade-in zoom-in-95 duration-200">
             <div className="p-3 border-b border-slate-100 dark:border-slate-700 sm:hidden">
-               <p className="font-bold text-slate-800 dark:text-slate-100 truncate">{session.user.name}</p>
-               <p className="text-xs text-slate-500 dark:text-slate-400 truncate">{session.user.email}</p>
+               <p className="font-bold text-slate-800 dark:text-slate-100 truncate">{session.user?.name}</p>
+               <p className="text-xs text-slate-500 dark:text-slate-400 truncate">{session.user?.email}</p>
             </div>
             <Link 
               href="/profile"

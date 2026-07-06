@@ -28,7 +28,7 @@ export default async function QAPage() {
   const session = await getServerSession(authOptions);
   let isBanned = false;
   if (session?.user?.email) {
-    const userProfile = await UserProfile.findOne({ email: session.user.email }).lean();
+    const userProfile = await UserProfile.findOne({ email: session.user?.email }).lean();
     isBanned = userProfile?.isBanned || false;
   }
   

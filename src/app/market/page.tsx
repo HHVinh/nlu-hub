@@ -36,7 +36,7 @@ export default async function MarketPage(props: { searchParams?: Promise<{ categ
   
   let userProfile = null;
   if (session?.user?.email) {
-    userProfile = await UserProfile.findOne({ email: session.user.email }).lean();
+    userProfile = await UserProfile.findOne({ email: session.user?.email }).lean();
   }
   
   const searchParams = props.searchParams ? await props.searchParams : {};

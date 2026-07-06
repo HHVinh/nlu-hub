@@ -86,11 +86,11 @@ export default async function SubjectPage({ params }: { params: Promise<{ subjec
         <div className="flex items-center gap-3 w-full sm:w-auto">
           <AddLinkClient 
             subjectId={subjectId} 
-            user={session?.user ? { name: session.user.name, email: session.user.email } : null} 
+            user={session?.user ? { name: session.user?.name, email: session.user?.email } : null} 
           />
           <UploadWidgetClient 
             subjectId={subjectId} 
-            user={session?.user ? { name: session.user.name, email: session.user.email } : null} 
+            user={session?.user ? { name: session.user?.name, email: session.user?.email } : null} 
           />
         </div>
       </div>

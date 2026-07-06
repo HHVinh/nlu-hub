@@ -28,7 +28,7 @@ export default async function LostFoundPage(props: { searchParams?: Promise<{ [k
   
   let userProfile = null;
   if (session?.user?.email) {
-    userProfile = await UserProfile.findOne({ email: session.user.email }).lean();
+    userProfile = await UserProfile.findOne({ email: session.user?.email }).lean();
   }
   
   const searchParams = props.searchParams ? await props.searchParams : {};
@@ -195,7 +195,7 @@ export default async function LostFoundPage(props: { searchParams?: Promise<{ [k
                         </a>
                         
                         {/* Nút báo cáo (Khách cũng thấy nếu đăng nhập) */}
-                        {isLoggedIn && session.user.email !== item.authorEmail && (
+                        {isLoggedIn && session.user?.email !== item.authorEmail && (
                           <div className="mt-2 text-center">
                             <ReportSellerClient 
                               accusedEmail={item.authorEmail}
@@ -208,14 +208,14 @@ export default async function LostFoundPage(props: { searchParams?: Promise<{ [k
                         )}
                         
                         {/* Nút đánh dấu đã giải quyết (Chỉ tác giả mới thấy) */}
-                        {isLoggedIn && session.user.email === item.authorEmail && (
+                        {isLoggedIn && session.user?.email === item.authorEmail && (
                           <MarkResolvedButtonClient itemId={item._id.toString()} isLost={isLost} />
                         )}
                       </div>
                     )}
 
                     {/* Nút xóa bài viết (Tác giả hoặc Admin) - Hiển thị kể cả khi đã giải quyết */}
-                    {isLoggedIn && (session.user.email === item.authorEmail || isAdmin) && (
+                    {isLoggedIn && (session.user?.email === item.authorEmail || isAdmin) && (
                       <div className={isResolved ? "mt-4 relative z-20" : "mt-2"}>
                         <DeleteLostItemButtonClient itemId={item._id.toString()} />
                       </div>

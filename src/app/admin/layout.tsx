@@ -11,7 +11,7 @@ export default async function AdminLayout({
   const session = await getServerSession(authOptions);
 
   // Chốt chặn bảo mật 1: Kiểm tra Email
-  if (!session || !session.user || session.user.email !== process.env.ADMIN_EMAIL) {
+  if (!session || !session.user || session.user?.email !== process.env.ADMIN_EMAIL) {
     redirect("/"); // Đá văng về trang chủ nếu không phải Admin
   }
 
