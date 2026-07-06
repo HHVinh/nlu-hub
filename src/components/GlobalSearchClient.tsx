@@ -17,6 +17,7 @@ interface SearchResponse {
   subjects: SearchResult[];
   documents: SearchResult[];
   questions: SearchResult[];
+  lostItems?: SearchResult[];
 }
 
 export default function GlobalSearchClient() {
@@ -65,7 +66,7 @@ export default function GlobalSearchClient() {
     return () => clearTimeout(timer);
   }, [query]);
 
-  const hasResults = results && (results.faculties.length > 0 || results.subjects.length > 0 || results.documents.length > 0 || results.questions?.length > 0 || results.lostItems?.length > 0);
+  const hasResults = results && (results.faculties.length > 0 || results.subjects.length > 0 || results.documents.length > 0 || (results.questions && results.questions.length > 0) || (results.lostItems && results.lostItems.length > 0));
 
   return (
     <div className="relative w-full max-w-md mx-4" ref={searchRef}>
@@ -171,7 +172,7 @@ export default function GlobalSearchClient() {
           {results?.lostItems?.length ? (
             <div className="p-2">
               <h4 className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2 px-2">Đồ Thất Lạc</h4>
-              {results.lostItems.map((item) => (
+              {results.lostItems?.map((item: SearchResult) => (
                 <Link 
                   key={item._id} 
                   href={item.url}

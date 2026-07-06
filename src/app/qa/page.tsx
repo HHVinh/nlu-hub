@@ -5,8 +5,6 @@ import AskQuestionClient from "./AskQuestionClient";
 import Link from "next/link";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import { timeAgo } from "@/lib/utils"; // Giả sử ta có hàm timeAgo, nếu chưa có ta sẽ viết thẳng một hàm đơn giản
-
 // Hàm tính thời gian trôi qua (vd: "2 giờ trước")
 function getTimeAgo(date: Date) {
   const seconds = Math.floor((new Date().getTime() - date.getTime()) / 1000);

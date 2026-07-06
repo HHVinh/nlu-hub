@@ -158,7 +158,7 @@ export default async function QuestionDetailPage({ params }: { params: Promise<{
       </div>
 
       {/* Form Trả lời */}
-      <SubmitAnswerClient questionId={questionId} />
+      <SubmitAnswerClient questionId={questionId} isLoggedIn={isLoggedIn} isBanned={isBanned} />
       
     </main>
   );
