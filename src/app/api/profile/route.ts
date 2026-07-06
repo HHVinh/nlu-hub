@@ -17,7 +17,7 @@ export async function GET() {
       return NextResponse.json({ success: false, message: "Vui lòng đăng nhập" }, { status: 401 });
     }
 
-    const email = session.user.email;
+    const email = session.user?.email;
 
     // 1. Lấy thông tin Hồ sơ
     const profile = await UserProfile.findOne({ email }).lean();
@@ -63,7 +63,7 @@ export async function PUT(request: Request) {
     }
 
     const profile = await UserProfile.findOneAndUpdate(
-      { email: session.user.email },
+      { email: session.user?.email },
       { phoneNumber },
       { new: true, upsert: true }
     );

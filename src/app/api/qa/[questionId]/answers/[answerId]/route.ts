@@ -23,7 +23,7 @@ export async function DELETE(
     }
 
     // Cơ chế phân quyền 2 lớp
-    const userEmail = session.user.email;
+    const userEmail = session.user?.email;
     const isAdmin = userEmail === process.env.ADMIN_EMAIL;
     const isAuthor = userEmail === answer.authorEmail;
 

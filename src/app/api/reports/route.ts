@@ -20,14 +20,14 @@ export async function POST(request: Request) {
     }
 
     // Không được tự báo cáo chính mình
-    if (session.user.email === accusedEmail) {
+    if (session.user?.email === accusedEmail) {
       return NextResponse.json({ success: false, message: "Bạn không thể tự báo cáo chính mình!" }, { status: 400 });
     }
 
     // Rate Limit: Tối đa 3 lần báo cáo/ngày
     const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
     const reportCount = await Report.countDocuments({ 
-      reporterEmail: session.user.email,
+      reporterEmail: session.user?.email,
       createdAt: { $gte: oneDayAgo }
     });
     
@@ -37,7 +37,7 @@ export async function POST(request: Request) {
 
     // Lưu Báo cáo vào DB
     await Report.create({
-      reporterEmail: session.user.email,
+      reporterEmail: session.user?.email,
       accusedEmail,
       productUrl,
       reason,
@@ -54,7 +54,7 @@ export async function POST(request: Request) {
           <ul style="background-color: #fef2f2; padding: 15px 15px 15px 30px; border-radius: 8px;">
             <li><b>Lý do:</b> ${reason}</li>
             <li><b>Kẻ bị tố cáo (Seller):</b> ${accusedEmail}</li>
-            <li><b>Người đi tố cáo:</b> ${session.user.email}</li>
+            <li><b>Người đi tố cáo:</b> ${session.user?.email}</li>
             <li><b>Link món đồ:</b> <a href="${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}${productUrl}">Xem món đồ</a></li>
           </ul>
           <p><b>Chi tiết bằng chứng:</b></p>

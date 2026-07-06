@@ -20,7 +20,7 @@ export async function PUT(request: Request, props: { params: Promise<{ id: strin
       return NextResponse.json({ success: false, message: "Không tìm thấy món đồ!" }, { status: 404 });
     }
 
-    if (item.authorEmail !== session.user.email) {
+    if (item.authorEmail !== session.user?.email) {
       return NextResponse.json({ success: false, message: "Bạn không có quyền thực hiện thao tác này!" }, { status: 403 });
     }
 
@@ -50,7 +50,7 @@ export async function DELETE(request: Request, props: { params: Promise<{ id: st
       return NextResponse.json({ success: false, message: "Không tìm thấy món đồ!" }, { status: 404 });
     }
 
-    const userEmail = session.user.email;
+    const userEmail = session.user?.email;
     const isAdmin = userEmail === process.env.ADMIN_EMAIL;
     const isAuthor = userEmail === item.authorEmail;
 

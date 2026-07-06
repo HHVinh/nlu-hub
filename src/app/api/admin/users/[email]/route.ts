@@ -9,7 +9,7 @@ export async function PATCH(request: Request, { params }: { params: Promise<{ em
     const session = await getServerSession(authOptions);
 
     // CHỐT CHẶN BẢO MẬT BACKEND
-    if (!session || !session.user || session.user.email !== process.env.ADMIN_EMAIL) {
+    if (!session || !session.user || session.user?.email !== process.env.ADMIN_EMAIL) {
       return NextResponse.json({ success: false, message: "403 Forbidden - Không có quyền truy cập" }, { status: 403 });
     }
 

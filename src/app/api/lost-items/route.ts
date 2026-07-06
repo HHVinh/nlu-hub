@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     }
 
     // Kiểm tra SĐT (Bảo mật Anti-Scam)
-    const userProfile = await UserProfile.findOne({ email: session.user.email }).lean();
+    const userProfile = await UserProfile.findOne({ email: session.user?.email }).lean();
     if (userProfile?.isBanned) {
       return NextResponse.json({ success: false, message: "Tài khoản của bạn đã bị cấm." }, { status: 403 });
     }
@@ -56,7 +56,7 @@ export async function POST(request: Request) {
     // Rate Limit: Tối đa 5 bài/ngày
     const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
     const postCount = await LostItem.countDocuments({ 
-      authorEmail: session.user.email,
+      authorEmail: session.user?.email,
       createdAt: { $gte: oneDayAgo }
     });
     if (postCount >= 5) {
@@ -76,8 +76,8 @@ export async function POST(request: Request) {
       category,
       imageUrl,
       contactInfo,
-      authorEmail: session.user.email,
-      authorName: session.user.name || "Sinh viên",
+      authorEmail: session.user?.email,
+      authorName: session.user?.name || "Sinh viên",
     });
 
     return NextResponse.json({ success: true, message: "Đăng tin thành công!", item: newItem });

@@ -59,12 +59,12 @@ export async function POST(
       return NextResponse.json({ success: false, message: "Nội dung trả lời không được trống!" }, { status: 400 });
     }
 
-    const userEmail = session.user.email;
+    const userEmail = session.user?.email;
 
     const newAnswer = await Answer.create({
       questionId,
       content,
-      authorName: session.user.name || "Sinh viên Ẩn danh",
+      authorName: session.user?.name || "Sinh viên Ẩn danh",
       authorEmail: userEmail,
     });
 
@@ -118,7 +118,7 @@ export async function PUT(
     }
 
     const { questionId } = await params;
-    const userEmail = session.user.email;
+    const userEmail = session.user?.email;
     const question = await Question.findById(questionId);
     
     if (!question) {
@@ -163,7 +163,7 @@ export async function DELETE(
     }
 
     // Cơ chế phân quyền 2 lớp
-    const userEmail = session.user.email;
+    const userEmail = session.user?.email;
     const isAdmin = userEmail === process.env.ADMIN_EMAIL;
     const isAuthor = userEmail === question.authorEmail;
 

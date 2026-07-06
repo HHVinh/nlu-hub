@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const email = session.user.email;
+    const email = session.user?.email;
     const body = await request.json();
     const { subjectId } = body;
 

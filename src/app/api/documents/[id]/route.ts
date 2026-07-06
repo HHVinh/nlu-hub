@@ -26,8 +26,8 @@ export async function PUT(request: Request, { params }: { params: Promise<{ id: 
     }
 
     // Phân quyền (Authorization)
-    const isOwner = session.user.email === doc.uploaderEmail;
-    const isAdmin = session.user.email === process.env.ADMIN_EMAIL;
+    const isOwner = session.user?.email === doc.uploaderEmail;
+    const isAdmin = session.user?.email === process.env.ADMIN_EMAIL;
     
     if (!isOwner && !isAdmin) {
       return NextResponse.json({ success: false, message: "Bạn không có quyền sửa tài liệu này" }, { status: 403 });
@@ -59,8 +59,8 @@ export async function DELETE(request: Request, { params }: { params: Promise<{ i
     }
 
     // Phân quyền (Authorization)
-    const isOwner = session.user.email === doc.uploaderEmail;
-    const isAdmin = session.user.email === process.env.ADMIN_EMAIL;
+    const isOwner = session.user?.email === doc.uploaderEmail;
+    const isAdmin = session.user?.email === process.env.ADMIN_EMAIL;
     
     if (!isOwner && !isAdmin) {
       return NextResponse.json({ success: false, message: "Bạn không có quyền xóa tài liệu này" }, { status: 403 });

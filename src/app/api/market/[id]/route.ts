@@ -24,7 +24,7 @@ export async function PUT(
     }
 
     // Chỉ tác giả mới được cập nhật trạng thái
-    if (product.authorEmail !== session.user.email) {
+    if (product.authorEmail !== session.user?.email) {
       return NextResponse.json({ success: false, message: "Bạn không có quyền sửa trạng thái món đồ này." }, { status: 403 });
     }
 
@@ -61,7 +61,7 @@ export async function DELETE(
     }
 
     // Phân quyền 2 lớp
-    const userEmail = session.user.email;
+    const userEmail = session.user?.email;
     const isAdmin = userEmail === process.env.ADMIN_EMAIL;
     const isAuthor = userEmail === product.authorEmail;
 

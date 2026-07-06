@@ -21,15 +21,15 @@ export async function POST(request: Request) {
     }
 
     // Không được tự đánh giá chính mình
-    if (session.user.email === sellerEmail) {
+    if (session.user?.email === sellerEmail) {
       return NextResponse.json({ success: false, message: "Bạn không thể tự đánh giá uy tín của chính mình!" }, { status: 400 });
     }
 
     // Nếu đã đánh giá rồi thì Ghi đè (Sửa lại), nếu chưa thì Tạo mới
     await Review.findOneAndUpdate(
-      { reviewerEmail: session.user.email, sellerEmail },
+      { reviewerEmail: session.user?.email, sellerEmail },
       { 
-        reviewerName: session.user.name || "Người dùng ẩn danh",
+        reviewerName: session.user?.name || "Người dùng ẩn danh",
         rating,
         comment 
       },

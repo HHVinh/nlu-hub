@@ -47,7 +47,7 @@ export async function POST(request: Request) {
     // Rate Limit: Tối đa 15 món đồ/ngày
     const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
     const postCount = await Product.countDocuments({ 
-      authorEmail: session.user.email,
+      authorEmail: session.user?.email,
       createdAt: { $gte: oneDayAgo }
     });
     if (postCount >= 15) {
@@ -67,8 +67,8 @@ export async function POST(request: Request) {
     const newProduct = await Product.create({
       ...data,
       price: priceValue,
-      authorName: session.user.name || "Người dùng ẩn danh",
-      authorEmail: session.user.email,
+      authorName: session.user?.name || "Người dùng ẩn danh",
+      authorEmail: session.user?.email,
     });
 
     return NextResponse.json({ success: true, message: "Đăng tin thành công!", data: newProduct }, { status: 201 });

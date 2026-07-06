@@ -52,7 +52,7 @@ export async function POST(request: Request) {
     // Rate Limit: Tối đa 5 câu hỏi/ngày
     const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000);
     const postCount = await Question.countDocuments({ 
-      authorEmail: session.user.email,
+      authorEmail: session.user?.email,
       createdAt: { $gte: oneDayAgo }
     });
     if (postCount >= 5) {
@@ -69,8 +69,8 @@ export async function POST(request: Request) {
       title,
       content,
       tags: tags || [],
-      authorName: session.user.name || "Sinh viên Ẩn danh",
-      authorEmail: session.user.email,
+      authorName: session.user?.name || "Sinh viên Ẩn danh",
+      authorEmail: session.user?.email,
     });
 
     return NextResponse.json({ success: true, message: "Đăng câu hỏi thành công!", data: newQuestion }, { status: 201 });
