@@ -59,11 +59,13 @@ export async function POST(
       return NextResponse.json({ success: false, message: "Nội dung trả lời không được trống!" }, { status: 400 });
     }
 
+    const userEmail = session.user.email;
+
     const newAnswer = await Answer.create({
       questionId,
       content,
       authorName: session.user.name || "Sinh viên Ẩn danh",
-      authorEmail: session.user.email,
+      authorEmail: userEmail,
     });
 
     // ---- GỬI EMAIL THÔNG BÁO CHO TÁC GIẢ VÀ NGƯỜI THEO DÕI ----
@@ -73,7 +75,7 @@ export async function POST(
         const questionUrl = `${process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000"}/qa/${questionId}`;
         
         // 1. Gửi cho tác giả (nếu người đang trả lời KHÔNG PHẢI là tác giả)
-        if (question.authorEmail !== session.user.email) {
+        if (question.authorEmail !== userEmail) {
           await sendNewAnswerNotification(question.authorEmail, question.title, newAnswer.authorName, questionUrl);
         }
         
@@ -81,7 +83,7 @@ export async function POST(
         if (question.followers && question.followers.length > 0) {
           // Lọc ra danh sách gửi: Bỏ người đang trả lời và Tác giả gốc (tác giả gốc đã nhận ở trên rồi)
           const followersToEmail = question.followers.filter(
-            (email: string) => email !== session.user.email && email !== question.authorEmail
+            (email: string) => email !== userEmail && email !== question.authorEmail
           );
           
           // Gửi hàng loạt
