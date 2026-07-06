@@ -32,11 +32,11 @@ export default function Footer() {
         </div>
 
         <div className="text-slate-500 dark:text-slate-500 italic">
-          © {new Date().getFullYear()} NLU Hub - Dự án phi lợi nhuận hỗ trợ Sinh viên Nông Lâm
+          © {new Date().getFullYear()} Dự án phi lợi nhuận hỗ trợ Sinh viên Nông Lâm
         </div>
 
         <div className="mt-2 pt-3 border-t border-slate-100 dark:border-slate-800/50 max-w-2xl text-[11px] sm:text-xs text-slate-400 dark:text-slate-500 leading-relaxed">
-          <strong>Lưu ý:</strong> NLU Hub là nền tảng chia sẻ học thuật độc lập do sinh viên tự xây dựng và vận hành. Dự án này hoàn toàn không trực thuộc quản lý và không đại diện cho tiếng nói chính thức của trường Đại học Nông Lâm TP.HCM.
+          <strong>Lưu ý:</strong> Đây là nền tảng chia sẻ học thuật độc lập do sinh viên tự xây dựng và vận hành. Dự án hoàn toàn không trực thuộc quản lý và không đại diện cho tiếng nói chính thức của trường Đại học Nông Lâm TP.HCM.
         </div>
       </div>
     </footer>

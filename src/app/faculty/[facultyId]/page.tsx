@@ -51,7 +51,7 @@ export default async function FacultyPage({ params }: { params: Promise<{ facult
           <h1 className={`text-3xl font-extrabold ${faculty.color}`}>{faculty.name}</h1>
           <p className="text-slate-500 dark:text-slate-400 mt-2">
             {facultyId === "tin-hoc" 
-              ? "Vui lòng truy cập Website NLU Hub | IT Learning bên dưới để học và ôn thi chuẩn đầu ra Tin học."
+              ? "Vui lòng truy cập Website Nong Lam IT Learning bên dưới để học và ôn thi chuẩn đầu ra Tin học."
               : "Chọn môn học bên dưới hoặc thêm môn mới nếu chưa có."}
           </p>
         </div>

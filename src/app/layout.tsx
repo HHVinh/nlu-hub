@@ -19,12 +19,12 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "NLU Hub",
-  description: "NLU Hub - Nền tảng hỗ trợ học tập của sinh viên Nông Lâm. Nơi chia sẻ giáo trình, đề thi, thảo luận học tập và kết nối sinh viên Đại học Nông Lâm TP.HCM (NLU).",
-  keywords: ["NLU", "NLU Hub", "Đại học Nông Lâm", "Tài liệu NLU", "Giáo trình NLU", "Chợ sinh viên NLU", "Đồ thất lạc NLU"],
+  description: "Cộng đồng chia sẻ tài liệu, hỏi đáp và kết nối dành cho sinh viên Nông Lâm.",
+  keywords: ["NLU","Nông Lâm TPHCM" ,"NLU Hub", "Đại học Nông Lâm", "Tài liệu NLU", "Giáo trình NLU", "Cộng đồng sinh viên NLU", "Tin học Nông Lâm"],
   openGraph: {
     title: "NLU Hub",
     description: "Nền tảng chia sẻ tài liệu và kết nối sinh viên Đại học Nông Lâm TP.HCM.",
-    url: "https://nluhub.vercel.app", // Thay bằng domain thật sau này
+    url: "https://nlu-hub.vercel.app",
     siteName: "NLU Hub",
     locale: "vi_VN",
     type: "website",
@@ -44,7 +44,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors">
         <AuthProvider>
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ThemeProvider attribute="class" defaultTheme="dark">
             <Navbar />
             {children}
             <Footer />

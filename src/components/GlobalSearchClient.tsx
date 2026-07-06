@@ -69,7 +69,7 @@ export default function GlobalSearchClient() {
   const hasResults = results && (results.faculties.length > 0 || results.subjects.length > 0 || results.documents.length > 0 || (results.questions && results.questions.length > 0) || (results.lostItems && results.lostItems.length > 0));
 
   return (
-    <div className="relative w-full max-w-md mx-4" ref={searchRef}>
+    <div className="relative w-full max-w-md" ref={searchRef}>
       <div className="relative">
         <input
           type="text"
