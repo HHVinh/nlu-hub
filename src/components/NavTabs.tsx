@@ -14,7 +14,7 @@ export default function NavTabs() {
   ];
 
   return (
-    <div className="max-w-6xl mx-auto px-4 w-full flex items-center gap-6 overflow-x-auto no-scrollbar border-t border-slate-100 dark:border-slate-800/50 pt-2 pb-2">
+    <div className="max-w-6xl mx-auto px-2 sm:px-4 w-full flex items-center justify-between sm:justify-start gap-2 sm:gap-6 overflow-x-auto no-scrollbar border-t border-slate-100 dark:border-slate-800/50 pt-2 pb-2">
       {tabs.map((tab) => {
         // Active if exact match for home, or if pathname starts with the tab path (for others)
         const isActive = tab.path === "/" 
@@ -25,7 +25,7 @@ export default function NavTabs() {
           <Link
             key={tab.path}
             href={tab.path}
-            className={`whitespace-nowrap pb-1 border-b-2 font-medium text-sm transition-colors ${
+            className={`whitespace-nowrap pb-1 border-b-2 font-medium text-[11px] sm:text-sm transition-colors ${
               isActive
                 ? "border-blue-600 text-blue-600 dark:border-blue-400 dark:text-blue-400"
                 : "border-transparent text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200"

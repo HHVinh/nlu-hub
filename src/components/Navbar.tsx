@@ -14,11 +14,8 @@ export default async function Navbar() {
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 shrink-0">
-          <span className="text-2xl font-extrabold text-slate-800 dark:text-white tracking-tight hidden sm:block">
+          <span className="text-xl sm:text-2xl font-extrabold text-slate-800 dark:text-white tracking-tight">
             NLU <span className="text-amber-500">Hub</span>
-          </span>
-          <span className="text-2xl font-extrabold text-slate-800 dark:text-white tracking-tight sm:hidden">
-            NLU
           </span>
         </Link>
         
