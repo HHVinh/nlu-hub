@@ -36,6 +36,39 @@ export default async function Home() {
     <main className="flex flex-col items-center py-12 px-4 font-[family-name:var(--font-geist-sans)] flex-grow">
       {/* Main Content: Lưới danh sách các Khoa */}
       <div className="max-w-6xl w-full">
+        
+        {/* Banner Giới thiệu (Hero Banner) */}
+        <div className="mb-10 sm:mb-14 relative overflow-hidden rounded-3xl bg-gradient-to-br from-blue-50/80 via-white to-indigo-50/80 dark:from-slate-800/80 dark:via-slate-800/50 dark:to-slate-900 border border-blue-100/50 dark:border-slate-700/50 shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-[0_8px_30px_rgb(0,0,0,0.1)]">
+          {/* Background decorative glowing orbs */}
+          <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-blue-400/20 dark:bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-indigo-400/20 dark:bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          
+          <div className="relative p-6 sm:p-10 flex flex-col items-center justify-center text-center space-y-5 max-w-4xl mx-auto">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-800 dark:text-white">
+              Kho Tài Liệu <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">Sinh Viên Nông Lâm</span>
+            </h1>
+            
+            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed w-full">
+              Bạn đang giữ những tài liệu quý giá hay đề thi cũ? Hãy <strong>đóng góp (Upload)</strong> để tiếp sức cho đàn em! 
+              <br />
+              Hoặc nếu đang cần ôn thi, bạn có thể dễ dàng <strong>tìm và tải về (Download)</strong> kho tri thức từ cộng đồng NLU Hub.
+            </p>
+  
+            {/* Feature Badges */}
+            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 pt-2">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-blue-100/80 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 text-xs sm:text-sm font-semibold border border-blue-200 dark:border-blue-800/30 transition-transform hover:scale-105 cursor-default">
+                📚 Hàng ngàn tài liệu
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-100/80 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 text-xs sm:text-sm font-semibold border border-emerald-200 dark:border-emerald-800/30 transition-transform hover:scale-105 cursor-default">
+                🆓 Miễn phí 100%
+              </span>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-100/80 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 text-xs sm:text-sm font-semibold border border-amber-200 dark:border-amber-800/30 transition-transform hover:scale-105 cursor-default">
+                🤝 Cộng đồng đóng góp
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* Khu vực 1: Chuẩn đầu ra & Đại cương */}
         <div className="mb-12">
           <h2 className="text-2xl font-bold mb-6 flex items-center gap-2 text-slate-800 dark:text-slate-100 uppercase tracking-wide border-b-2 border-amber-500 pb-2 inline-block">
